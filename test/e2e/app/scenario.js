@@ -34,7 +34,7 @@ describe("my app", function() {
             $('form').submit();
 
             expect(browser.getLocationAbsUrl()).toMatch('/result');
-            expect($$("ul li").count()).toEqual(2);
+            expect($$("ul li").count()).toEqual(3);
             return expect($$("li").last().getInnerHtml()).toMatch(/strong/);
         });
 	});
@@ -47,4 +47,13 @@ describe("my app", function() {
 			return expect($("[ui-view] p:first-child").getText()).toMatch(/Your preferences/);
 		});
 	});
+
+    describe("about", function() {
+        beforeEach(function() {
+            return browser.get("/#!/about");
+        });
+        return it("should render a placeholder text when user navigates to /about", function() {
+            return expect($("[ui-view] p:nth-child(2)").getText()).toMatch(/Lorem ipsum/);
+        });
+    });
 });

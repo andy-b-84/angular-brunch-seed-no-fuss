@@ -1,6 +1,9 @@
 'use strict';
 
-// register the module with Angular
+/**
+ * Displays matching form checkboxes
+ * @usage <label question-checkbox></label>
+ */
 App.directive('questionCheckbox', function(){
     return {
         templateUrl: 'partials/question-checkbox.html'

@@ -2,7 +2,7 @@
 describe("filter", function() {
 	beforeEach(module("app"));
 
-	return describe("interpolate", function() {
+	describe("interpolate", function() {
 		beforeEach(module(function($provide) {
 			$provide.value("version", "TEST_VER");
 		}));
@@ -12,7 +12,7 @@ describe("filter", function() {
 	});
 
     return describe("bbcode", function() {
-        return it("should make a ** text STRONG", inject(function(interpolateFilter) {
+        return it("should make a ** text STRONG", inject(function(bbcodeFilter) {
             return expect(bbcodeFilter("*test*")).toEqual("<strong>test</strong>");
         }));
     });
