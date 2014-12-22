@@ -23,4 +23,14 @@ describe("directives", function() {
             });
         });
     });
+
+    return describe("question-checkbox", function() {
+        return it("should return a checkbox", function() {
+            return inject(function($compile, $rootScope) {
+                var element;
+                element = $compile("<label question-checkbox></label>")($rootScope);
+                return expect(element.text()).toMatch('input type="checkbox"');
+            });
+        });
+    });
 });
