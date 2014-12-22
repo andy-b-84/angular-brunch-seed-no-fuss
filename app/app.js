@@ -14,14 +14,22 @@ var App = angular.module('app', ['ngSanitize', 'ngResource', 'ui.router', 'oc.mo
 			}
 		}
 	}).state('result', {
-		url: "/result",
-		views: {
-			"mainView": {
-				templateUrl: "partials/partial.html",
-				controller: 'ResultCtrl'
-			}
-		}
-	});
+        url: "/result",
+        views: {
+            "mainView": {
+                templateUrl: "partials/partial.html",
+                controller: 'ResultCtrl'
+            }
+        }
+    }).state('about', {
+        url: "/about",
+        views: {
+            "mainView": {
+                templateUrl: "partials/about.html",
+                controller: 'AboutCtrl'
+            }
+        }
+    });
 
 	// Without server side support html5 must be disabled.
 	return $locationProvider.html5Mode(false);
