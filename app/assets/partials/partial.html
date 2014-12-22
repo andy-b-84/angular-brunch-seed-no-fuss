@@ -1,4 +1,4 @@
 <p>Your preferences: </p>
 <li ng-repeat="preference in preferences">
-    {{preference}}
+    <span ng-bind-html="preference|bbcode"></span>
 </li>

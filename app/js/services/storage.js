@@ -7,8 +7,8 @@ var Storage = {
         mms: "I like M&m's",
         h2: 'I like hitchhiking',
         sw: 'I like swimming',
-        girls: 'I like girls',
-        boys: 'I like boys'
+        girls: '*I like girls*',
+        boys: '*I like boys*'
     }
 }
 
