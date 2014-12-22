@@ -22,10 +22,10 @@ describe("my app", function() {
 		});
 
 		it("should sync done status with checkbox state", function() {
-			$("[ui-view] ul li input:not(:checked)").click();
-			expect($("[ui-view] ul li span").getAttribute("class")).toEqual("donetrue");
+			$$("[ui-view] ul li input:not(:checked)").first().click();
+			expect($$("[ui-view] ul li span").first().getAttribute("class")).toEqual("donetrue");
 			$("[ui-view] ul li input:checked").click();
-			return expect($("[ui-view] ul li span").getAttribute("class")).toEqual("donefalse");
+			return expect($$("[ui-view] ul li span").first().getAttribute("class")).toEqual("donefalse");
 		});
 	});
 
