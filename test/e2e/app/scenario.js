@@ -27,6 +27,16 @@ describe("my app", function() {
 			$("[ui-view] ul li input:checked").click();
 			return expect($$("[ui-view] ul li span").first().getAttribute("class")).toEqual("donefalse");
 		});
+
+        it("should save preferences in session", function() {
+            $$("[ui-view] ul li input:not(:checked)").first().click();
+            $$("[ui-view] ul li input:not(:checked)").last().click();
+            $('form').submit();
+
+            expect(browser.getLocationAbsUrl()).toMatch('/result');
+            expect($$("ul li").count()).toEqual(2);
+            return expect($$("li").last().getInnerHtml()).toMatch(/strong/);
+        });
 	});
 
 	describe("result", function() {
