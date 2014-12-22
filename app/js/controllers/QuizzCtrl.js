@@ -1,6 +1,17 @@
+/**
+ * Dislpays the matching form, retrieves it, saves it into session, then transfer to the result page
+ */
 App.controller('QuizzCtrl', ['$scope', '$location', 'Storage', function($scope, $location, Storage) {
+    /**
+     * Angular's form object
+     * @type {{}}
+     */
     $scope.matchingForm = {};
 
+    /**
+     * Available questions
+     * @type {{key: string, text: string, done: boolean, type: string}[]}
+     */
 	$scope.matchingForm.quizzes = [{
         key: 'pizza',
 		text: "I like pizza",
@@ -43,6 +54,9 @@ App.controller('QuizzCtrl', ['$scope', '$location', 'Storage', function($scope, 
         type: 'v2.0'
     }];
 
+    /**
+     * Manages form submission
+     */
     $scope.submitForm = function() {
         for (var quizz in $scope.matchingForm.quizzes) {
             Storage.create($scope.matchingForm.quizzes[quizz].key, $scope.matchingForm.quizzes[quizz].done);

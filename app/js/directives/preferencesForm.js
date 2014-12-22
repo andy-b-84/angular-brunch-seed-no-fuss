@@ -1,6 +1,10 @@
 'use strict';
 
-// register the module with Angular
+/**
+ * Displays a matching form
+ * You'll have to provide a valid filter in order for questions to appear
+ * @usage <form preferences-form="filter"></form>
+ */
 App.directive('preferencesForm', function(){
     return {
         link: function(scope, element, attrs, tabsCtrl) {
@@ -11,7 +15,6 @@ App.directive('preferencesForm', function(){
                 }
             }
             scope.matchingForm.quizzes = quizzes;
-            console.log(scope.matchingForm.quizzes);
         },
         templateUrl: 'partials/preferences-form.html'
     };
