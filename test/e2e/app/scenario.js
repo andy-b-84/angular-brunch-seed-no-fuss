@@ -7,53 +7,44 @@ describe("my app", function() {
 		return browser.get("/#!");
 	});
 
-	it("should automatically redirect to /todo when location hash/fragment is empty", function() {
-		return expect(browser.getLocationAbsUrl()).toMatch("/todo");
+	it("should automatically redirect to /quizz when location hash/fragment is empty", function() {
+		return expect(browser.getLocationAbsUrl()).toMatch("/quizz");
 	});
 
-	it("should navigate to /view when the View link in nav is clicked", function() {
-		$('.nav a[ui-sref="view()"]').click();
-		return expect(browser.getLocationAbsUrl()).toMatch("/view");
+	it("should navigate to /result when the Result link in nav is clicked", function() {
+		$('.nav a[ui-sref="result()"]').click();
+		return expect(browser.getLocationAbsUrl()).toMatch("/result");
 	});
 
-	describe("todo", function() {
-		it("should list 2 items", function() {
-			return expect(element.all(by.repeater("todo in todos")).count()).toEqual(2);
-		});
-
-		it("should display checked items with a line-through", function() {
-			return expect($("[ui-view] ul li input:checked + span").getCssValue("text-decoration")).toEqual("line-through");
+	describe("quizz", function() {
+		it("should list 6 items", function() {
+			return expect(element.all(by.repeater("quizz in matchingForm.quizzes")).count()).toEqual(6);
 		});
 
 		it("should sync done status with checkbox state", function() {
-			$("[ui-view] ul li input:not(:checked)").click();
-			expect($("[ui-view] ul li span").getAttribute("class")).toEqual("donetrue");
+			$$("[ui-view] ul li input:not(:checked)").first().click();
+			expect($$("[ui-view] ul li span").first().getAttribute("class")).toEqual("donetrue");
 			$("[ui-view] ul li input:checked").click();
-			return expect($("[ui-view] ul li span").getAttribute("class")).toEqual("donefalse");
+			return expect($$("[ui-view] ul li span").first().getAttribute("class")).toEqual("donefalse");
 		});
 
-		it("should remove checked items when the archive link is clicked", function() {
-			$("[ui-view] a[ng-click=\"archive()\"]").click();
-			return expect(element.all(by.repeater("todo in todos")).count()).toEqual(1);
-		});
+        it("should save preferences in session", function() {
+            $$("[ui-view] ul li input:not(:checked)").first().click();
+            $$("[ui-view] ul li input:not(:checked)").last().click();
+            $('form').submit();
 
-		return it("should add a newly submitted item to the end of the list and empty the text input", function() {
-			var newItemLabel = "test newly added item";
-			var input = element(by.model("todoText"));
-			input.sendKeys(newItemLabel);
-			$('[ui-view] button[type="submit"]').click();
-			expect(element.all(by.repeater("todo in todos")).count()).toEqual(3);
-			expect($("[ui-view] ul li:last-child span").getText()).toEqual(newItemLabel);
-			return expect(input.getAttribute('value')).toEqual("");
-		});
+            expect(browser.getLocationAbsUrl()).toMatch('/result');
+            expect($$("ul li").count()).toEqual(2);
+            return expect($$("li").last().getInnerHtml()).toMatch(/strong/);
+        });
 	});
 
-	describe("view", function() {
+	describe("result", function() {
 		beforeEach(function() {
-			return browser.get("/#!/view");
+			return browser.get("/#!/result");
 		});
-		return it("should render view when user navigates to /view", function() {
-			return expect($("[ui-view] p:first-child").getText()).toMatch(/partial for view 1/);
+		return it("should render view when user navigates to /result", function() {
+			return expect($("[ui-view] p:first-child").getText()).toMatch(/Your preferences/);
 		});
 	});
 });
