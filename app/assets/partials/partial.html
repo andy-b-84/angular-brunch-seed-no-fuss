@@ -1,1 +1,4 @@
-<p>This is the partial for view 1.</p>
+<p>Your preferences: </p>
+<li ng-repeat="preference in preferences">
+    <span ng-bind-html="preference|bbcode"></span>
+</li>

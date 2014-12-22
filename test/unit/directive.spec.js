@@ -13,4 +13,24 @@ describe("directives", function() {
 			});
 		});
 	});
+
+    return describe("preferences-form", function() {
+        return it("should return the html form", function() {
+            return inject(function($compile, $rootScope) {
+                var element;
+                element = $compile("<form preferences-form></form>")($rootScope);
+                return expect(element.text()).toMatch("I like pizza");
+            });
+        });
+    });
+
+    return describe("question-checkbox", function() {
+        return it("should return a checkbox", function() {
+            return inject(function($compile, $rootScope) {
+                var element;
+                element = $compile("<label question-checkbox></label>")($rootScope);
+                return expect(element.text()).toMatch('input type="checkbox"');
+            });
+        });
+    });
 });

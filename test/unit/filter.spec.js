@@ -1,6 +1,7 @@
 'use strict';
 describe("filter", function() {
 	beforeEach(module("app"));
+
 	return describe("interpolate", function() {
 		beforeEach(module(function($provide) {
 			$provide.value("version", "TEST_VER");
@@ -9,4 +10,10 @@ describe("filter", function() {
 			return expect(interpolateFilter("before %VERSION% after")).toEqual("before TEST_VER after");
 		}));
 	});
+
+    return describe("bbcode", function() {
+        return it("should make a ** text STRONG", inject(function(interpolateFilter) {
+            return expect(bbcodeFilter("*test*")).toEqual("<strong>test</strong>");
+        }));
+    });
 });
