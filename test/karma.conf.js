@@ -18,6 +18,7 @@ module.exports = function(karma) {
 
 			'bower_components/angular-mocks/angular-mocks.js',
 
+            'app/js/**/*.js',
 			'test/unit/**/*.spec.js'
 		],
 
@@ -28,7 +29,7 @@ module.exports = function(karma) {
 
 		// test results reporter to use
 		// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-		reporters: ['progress', 'junit'],
+		reporters: ['progress', 'junit', 'coverage'],
 
 		// web server port
 		port: 3334,
@@ -61,7 +62,7 @@ module.exports = function(karma) {
 
 		// Continuous Integration mode
 		// if true, it capture browsers, run tests and exit
-		singleRun: false,
+		singleRun: true,
 
 		reportSlowerThan: 500,
 
@@ -77,7 +78,16 @@ module.exports = function(karma) {
 			'karma-firefox-launcher',
 			'karma-safari-launcher',
 			'karma-phantomjs-launcher',
-			'karma-junit-reporter'
-		]
+			'karma-junit-reporter',
+            'karma-coverage'
+		],
+
+        preprocessors: {
+            '**/app/js/**/*.js': ['coverage']
+        },
+        coverageReporter: {
+            type: 'html',
+            dir: 'coverage/'
+        }
 	});
 };
