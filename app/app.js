@@ -3,22 +3,22 @@
 // Declare app level module which depends on filters, and services
 var App = angular.module('app', ['ngSanitize', 'ngResource', 'ui.router', 'oc.modal']).config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function($stateProvider, $locationProvider, $urlRouterProvider) {
 	$locationProvider.hashPrefix('!');
-	$urlRouterProvider.otherwise("/todo");
+	$urlRouterProvider.otherwise("/quizz");
 
-	$stateProvider.state('todo', {
-		url: "/todo", // root route
+	$stateProvider.state('quizz', {
+		url: "/quizz",
 		views: {
 			"mainView": {
-				templateUrl: "partials/todo.html",
-				controller: 'TodoCtrl'
+				templateUrl: "partials/quizz.html",
+				controller: 'QuizzCtrl'
 			}
 		}
-	}).state('view', {
-		url: "/view",
+	}).state('result', {
+		url: "/result",
 		views: {
 			"mainView": {
 				templateUrl: "partials/partial.html",
-				controller: 'MyCtrl'
+				controller: 'ResultCtrl'
 			}
 		}
 	});

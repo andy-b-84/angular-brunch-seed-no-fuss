@@ -1,0 +1,16 @@
+<div>
+  <h2>Matching form</h2><span class="icon-glass"></span>
+    <form class="form-inline" role="form" ng-submit="submitForm()">
+      <ul class="unstyled">
+        <li ng-repeat="quizz in matchingForm.quizzes">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="quizz.done" name="{{quizz.key}}" value="{{quizz.text}}"><span class="done{{quizz.done}}">{{quizz.text}}</span>
+            </label>
+          </div>
+        </li>
+      </ul>
+      <button type="submit" class="btn btn-primary">Find my partner!</button>
+    </form>
+  </div>
+</div>
