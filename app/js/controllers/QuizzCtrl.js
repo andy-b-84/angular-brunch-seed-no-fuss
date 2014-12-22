@@ -4,27 +4,43 @@ App.controller('QuizzCtrl', ['$scope', '$location', 'Storage', function($scope, 
 	$scope.matchingForm.quizzes = [{
         key: 'pizza',
 		text: "I like pizza",
-		done: false
+		done: false,
+        type: 'v1.0'
 	}, {
         key: 'mms',
 		text: "I like M&m's",
-        done: false
+        done: false,
+        type: 'v1.0'
     }, {
         key: 'h2',
 		text: "I like hitchhiking",
-        done: false
+        done: false,
+        type: 'v1.0'
     }, {
         key: 'sw',
 		text: "I like swimming",
-        done: false
+        done: false,
+        type: 'v1.0'
     }, {
         key: 'girls',
 		text: "I like girls",
-        done: false
+        done: false,
+        type: 'v1.0'
     }, {
         key: 'boys',
 		text: "I like boys",
-        done: false
+        done: false,
+        type: 'v1.0'
+    }, {
+        key: 'mam',
+        text: "I like mammoths",
+        done: false,
+        type: 'v2.0'
+    }, {
+        key: 'cat',
+        text: "I like cats",
+        done: false,
+        type: 'v2.0'
     }];
 
     $scope.submitForm = function() {
